@@ -38,3 +38,12 @@ todo button {
     margin: 0.5rem;
     outline: none;
 }
+
+todo li:hover {
+    background-color: #eee;
+}
+
+todo li .completed {
+    text-decoration: line-through;
+    counter-reset: #ccc;
+}
