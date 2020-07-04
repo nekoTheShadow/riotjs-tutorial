@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<!--
+  本書ではPlunkerというサービスを利用しているが、ここではローカルマシンで開発する
+  またRiot.jsを利用するにあたり、本書ではCDNサービスとしてunpkgを利用しているが、ここではcdnjsを利用する。
+-->
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="lib/style.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/riot/4.13.2/riot+compiler.min.js"></script>
+</head>
+
+<body>
+  <todo></todo>
+
+  <script src="./todo.riot.html" type="riot"></script>
+  <script>
+    riot.compile().then(() => {
+      riot.mount('todo', {title: 'TODO App'})
+    })
+  </script>
+</body>
