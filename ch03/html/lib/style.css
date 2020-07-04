@@ -39,6 +39,13 @@ todo button {
     outline: none;
 }
 
+
+todo button:disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: default;
+}
+
 todo li:hover {
     background-color: #eee;
 }
