@@ -65,3 +65,9 @@ todo button.danger:hover {
     background-color: #CB2341;
     color: #fff;
 }
+
+todo button.danger:disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: default;
+}
