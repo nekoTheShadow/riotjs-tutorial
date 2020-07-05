@@ -4,7 +4,7 @@
   </div>
   <div id="container">
     <h1>{props.title}</h1>
-    <todo-form state={state} checkDoneTodo={checkDoneTodo}></todo-form>
+    <todo-form state={state} checkDoneTodo={checkDoneTodo} observable={obs}></todo-form>
     <h4>todo list</h4>
     <ul>
       <li each={todo in state.todoList} key={todo.id}>
@@ -26,9 +26,26 @@
         hasDoneTodo: true
       },
       onBeforeMount(props, state) {
-        state.nextId = props.nextId,
-        state.todoList = props.todoList,
+        state.nextId = props.nextId
+        state.todoList = props.todoList
         state.hasDoneTodo = this.checkDoneTodo()
+        this.obs = observable(this)
+      },
+      onMounted() {
+        this.on('add todo', (newTask) => {
+          const updateTodoList = [...this.state.todoList, {id: this.state.nextId + 1, ...newTask}];
+          this.update({
+            hasDoneTodo: this.checkDoneTodo(updateTodoList),
+            nextId: this.state.nextId + 1,
+            todoList: updateTodoList
+          })
+        });
+        this.on('delete done todos', () => {
+          this.update({
+            hasDoneTodo: false,
+            todoList: this.state.todoList.filter(item => item.done !== true)
+          })
+        })
       },
       toggle(todo) {
         todo.done = !todo.done

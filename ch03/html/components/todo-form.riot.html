@@ -1,7 +1,7 @@
 <todo-form>
   <form onsubmit={addTodo}>
     <input name="todo" value="" oninput={input} placeholder="please input task">
-    <button disabled={!state.isInput}>Add #{state.todoList.length + 1}</button>
+    <button disabled={!isInput}>Add #{state.todoList.length + 1}</button>
     <button class="danger" onclick={deleteDoneTodos} disabled={!state.hasDoneTodo}>delete done</button>
   </form>
   
@@ -14,37 +14,23 @@
       addTodo(e) {
         e.preventDefault();
         if (e.target.todo.value) {
-          // p.111には以下のように記述されているが動かない
-          // const updateTodoList = [...this.state.todoList, {id: this.state.nextId + 1, ...newTask}];
-          const updateTodoList = [
-            ...this.state.todoList, 
-            {
-              id: this.state.nextId + 1,
-              title: e.target.todo.value,
-              done: false
-            }
-          ];
-
-          this.update({
-            hasDoneTodo: this.props.checkDoneTodo(updateTodoList),
-            todoList: updateTodoList,
-            nextId: this.state.nextId + 1,
-            isInput: false
+          this.isInput = false
+          this.props.observable.trigger('add todo', {
+            title: e.target.todo.value,
+            done: false
           })
           e.target.todo.value = ""
         }
       },
 
       input(e) {
-        this.update({isInput: e.target.value})
+        this.isInput = e.target.value
+        this.update()
       },
 
       deleteDoneTodos() {
         if (window.confirm('本当にすべてのtodoを削除してもよろしいですか?')) {
-          this.update({
-            hasDoneTodo: false,
-            todoList: this.state.todoList.filter(item => item.done !== true)
-          })
+          this.props.observable.trigger('delete done todos')
         }
       },
     }
