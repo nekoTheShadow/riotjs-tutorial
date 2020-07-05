@@ -16,8 +16,10 @@
           <input  type="checkbox" checked={todo.done} onclick={() => toggle(todo)} />
           {todo.title}
         </label>
+        <button class="danger" onclick={() => deleteTodo(todo)}>delete</button>
       </li>
     </ul>
+    <p if={state.todoList.length === 0}>No Todos</p>
   </div>
 
   <script>
@@ -55,7 +57,12 @@
       toggle(todo) {
         todo.done = !todo.done
         this.update()
-      }
+      },
+      deleteTodo(todo) {
+        if (window.confirm('本当に削除してもよろしいですか?')) {
+          this.update({todoList: this.state.todoList.filter(item => item.id !== todo.id)})
+        }
+      } 
     }
   </script>
 </todo>
