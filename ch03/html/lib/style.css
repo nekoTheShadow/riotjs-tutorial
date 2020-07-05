@@ -39,15 +39,6 @@ todo button:disabled {
     cursor: default;
 }
 
-todo li:hover {
-    background-color: #eee;
-}
-
-todo li .completed {
-    text-decoration: line-through;
-    counter-reset: #ccc;
-}
-
 todo button.danger {
     background-color: #fff;
     color: #CB2341;

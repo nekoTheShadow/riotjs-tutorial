@@ -5,17 +5,7 @@
   <div id="container">
     <h1>{props.title}</h1>
     <todo-form state={state} checkDoneTodo={checkDoneTodo} observable={obs}></todo-form>
-    <h4>todo list</h4>
-    <ul>
-      <li each={todo in state.todoList} key={todo.id}>
-        <label class={todo.done ? 'completed' : null} >
-          <input  type="checkbox" checked={todo.done} onclick={() => toggle(todo)} />
-          {todo.title}
-        </label>
-        <button class="danger" onclick={() => deleteTodo(todo)}>delete</button>
-      </li>
-    </ul>
-    <p if={state.todoList.length === 0}>No Todos</p>
+    <todo-list todoList={state.todoList} observable={obs}></todo-list>
   </div>
 
   <script>
@@ -45,20 +35,19 @@
             hasDoneTodo: false,
             todoList: this.state.todoList.filter(item => item.done !== true)
           })
-        })
-      },
-      toggle(todo) {
-        todo.done = !todo.done
-        this.update({hasDoneTodo: this.checkDoneTodo()})
-      },
-      deleteTodo(todo) {
-        if (window.confirm('本当に削除してもよろしいですか?')) {
-          const updateTodoList = this.state.todoList.filter(item => item.id !== todo.id)
+        });
+        this.on('delete todo', (filteredTodoList) => {
           this.update({
-            todoList: updateTodoList,
-            hasDoneTodo: this.checkDoneTodo(updateTodoList)
+            hasDoneTodo: this.checkDoneTodo(filteredTodoList),
+            todoList: filteredTodoList
           })
-        }
+        });
+        this.on('toggle todo', (updatedList) => {
+          this.update({
+            hasDoneTodo: this.checkDoneTodo(updatedList),
+            todoList: updatedList
+          })
+        })
       },
       checkDoneTodo(updateTodoList) {
         const todoList = updateTodoList || this.state.todoList;
