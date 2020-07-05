@@ -20,13 +20,6 @@ todo #container {
         0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
-todo form input {
-    font-size: 85%;
-    padding: .4em;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-}
-
 todo button {
     background-color: red; /* 本書ではこの色を#1FADCSとしているが謎 */
     border: 1px solid #eee;

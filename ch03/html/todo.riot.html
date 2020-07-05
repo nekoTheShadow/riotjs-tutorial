@@ -4,12 +4,7 @@
   </div>
   <div id="container">
     <h1>{props.title}</h1>
-    <form onsubmit={addTodo}>
-      <input name="todo" value="" oninput={input} placeholder="please input task">
-      <button disabled={!state.isInput}>Add #{state.todoList.length + 1}</button>
-      <button class="danger" onclick={deleteDoneTodos} disabled={!state.hasDoneTodo}>delete done</button>
-    </form>
-
+    <todo-form state={state} checkDoneTodo={checkDoneTodo}></todo-form>
     <h4>todo list</h4>
     <ul>
       <li each={todo in state.todoList} key={todo.id}>
@@ -28,39 +23,12 @@
       state: {
         todoList: [],
         nextId: 0,
-        isInput: false,
         hasDoneTodo: true
       },
       onBeforeMount(props, state) {
         state.nextId = props.nextId,
         state.todoList = props.todoList,
         state.hasDoneTodo = this.checkDoneTodo()
-      },
-      addTodo(e) {
-        e.preventDefault();
-        if (e.target.todo.value) {
-          // p.111には以下のように記述されているが動かない
-          // const updateTodoList = [...this.state.todoList, {id: this.state.nextId + 1, ...newTask}];
-          const updateTodoList = [
-            ...this.state.todoList, 
-            {
-              id: this.state.nextId + 1,
-              title: e.target.todo.value,
-              done: false
-            }
-          ];
-
-          this.update({
-            hasDoneTodo: this.checkDoneTodo(updateTodoList),
-            todoList: updateTodoList,
-            nextId: this.state.nextId + 1,
-            isInput: false
-          })
-          e.target.todo.value = ""
-        }
-      },
-      input(e) {
-        this.update({isInput: e.target.value})
       },
       toggle(todo) {
         todo.done = !todo.done
@@ -72,14 +40,6 @@
           this.update({
             todoList: updateTodoList,
             hasDoneTodo: this.checkDoneTodo(updateTodoList)
-          })
-        }
-      },
-      deleteDoneTodos() {
-        if (window.confirm('本当にすべてのtodoを削除してもよろしいですか?')) {
-          this.update({
-            hasDoneTodo: false,
-            todoList: this.state.todoList.filter(item => item.done !== true)
           })
         }
       },
