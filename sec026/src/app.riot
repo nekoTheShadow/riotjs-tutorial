@@ -1,0 +1,31 @@
+<app>
+  <div class="app-header">
+    <img src="https://riot.js.org/img/logo/riot-logo.svg" alt="Riot.js logo" class="logo">
+  </div>
+
+  <h1>{props.title}</h1>
+  <h2>{props.title}</h2>
+  <h3>{props.title}</h3>
+  <h4>{props.title}</h4>
+  <h5>{props.title}</h5>
+  <h6>{props.title}</h6>
+  <hr />
+  <ul>
+    <li each={item in list}>{item}</li>
+  </ul>
+  <ol>
+    <li each={item in list}>{item}</li>
+  </ol>
+
+  <script>
+    export default {
+      onBeforeMount(props, state){
+        this.list = [
+          'li要素1',
+          'li要素2',
+          'li要素3',
+        ]
+      }
+    }
+  </script>
+</app>
