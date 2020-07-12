@@ -1,0 +1,59 @@
+<app>
+  <div class="app-header">
+    <img src="https://riot.js.org/img/logo/riot-logo.svg" alt="Riot.js logo" class="logo">
+  </div>
+
+  <h1>{props.title}</h1>
+  <ui>
+    <li each={(item, i) in state.items} key={item.id}>
+      {`${item.id}:${item.name}`}
+      <button onclick={remove} id={i}>remove</button>
+    </li>
+  </ui>
+  <button onclick={add}>add</button>
+  <button onclick={reverse}>reverse</button>
+
+  <script>
+    import animore from 'animore'
+    const uid = ((id) => () => id++)(5);
+    export default {
+      state: {
+        items: [
+          {name: 'ハガネール', id: 0},
+          {name: 'ルギア', id: 1},
+          {name: 'ミューツー', id: 2},
+          {name: 'ヘラクロス', id: 3},
+          {name: 'カビゴン', id: 4},
+        ]
+      },
+      onBeforeUpdate(){
+        this.animations = animore('li', {
+          duration: 500,
+          easing: 'linear'
+        })
+        this.animations.forEach(({stash}) => stash())
+      },
+      onUpdated() {
+        this.animations.forEach(({apply}) => apply())
+      },
+      add() {
+        const {items} = this.state
+        items.splice(~~(Math.random()*items.length), 0, {
+          name: Math.random() > 0.5 ? 'foo' : 'bar',
+          id: uid()
+        })
+        this.update({items})
+      },
+      remove(e) {
+        const {items} = this.state;
+        items.splice(e.target.id, 1)
+        this.update({items})
+      },
+      reverse() {
+        this.update({
+          items: this.state.items.reverse()
+        })
+      }
+    }
+  </script>
+</app>
