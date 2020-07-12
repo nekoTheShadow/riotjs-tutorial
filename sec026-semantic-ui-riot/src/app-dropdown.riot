@@ -1,0 +1,37 @@
+<app>
+  <div class="app-header">
+    <img src="https://riot.js.org/img/logo/riot-logo.svg" alt="Riot.js logo" class="logo">
+  </div>
+
+  <h1>{props.title}</h1>
+  <su-dropdown items={dropdownItems} onselect={handleSelect}></su-dropdown>
+  <su-dropdown items={dropdownItems} onselect={handleSelect} class="fluid"></su-dropdown>
+  <su-dropdown items={dropdownItems} onselect={handleSelect} class="fluid" direction="upward"></su-dropdown>
+  <su-dropdown items={dropdownItems} onselect={handleSelect} class="fluid" search=true></su-dropdown>
+  <div class="ui message">
+    <p>{selectMenu ? selectMenu.label : 'no select'}</p>
+  </div>
+
+  <script>
+    export default {
+      dropdownItems: [
+        {label: 'Select Friend', value: null, default: true},
+        {label: 'Janny Hess', value: 'jenny'},
+        {label: 'Elliot Fu', value: 'elliot'},
+        {label: 'Stevie Feliciano', value: 'stevie'},
+        {label: 'Christian', value: 'christian'},
+        {label: 'Matt', value: 'matt'},
+      ],
+      onBeforeMount(props, state){},
+      handleSelect(e){
+        this.selectMenu = e;
+        this.update()
+      }
+    }
+  </script>
+  <style>
+    :host {
+      padding: 2rem
+    }
+  </style>
+</app>
