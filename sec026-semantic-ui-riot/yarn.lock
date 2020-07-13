@@ -4545,10 +4545,10 @@ saxes@^3.1.9:
   dependencies:
     xmlchars "^2.1.1"
 
-semantic-ui-riot@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/semantic-ui-riot/-/semantic-ui-riot-2.2.2.tgz#74b69eb32259ee21faf33d313e2878c24c901161"
-  integrity sha512-YRokDDm0cSxWzIM2hYWTNx7tFo+C84aWft6lwip4BgMHS/8/8Be1Z+8om+rQEy0O7QOskrmybIbRAXJ2ltLkXg==
+semantic-ui-riot@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/semantic-ui-riot/-/semantic-ui-riot-2.2.3.tgz#a1e611e5a846a8b37e64081248d25569aaf1f991"
+  integrity sha512-IoHsGP6+TmIRoZvZy4520WJ6ua0SgO3nQ5g6NdBZlzRDZDopgemtwIg0oPfzVc2vOW9EZiF6UM/+rr8Mkr+WJw==
   dependencies:
     date-fns "^1.29.0"
     q "^1.5.1"

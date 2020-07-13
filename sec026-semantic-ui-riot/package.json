@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "riot": "4.11.0",
-    "semantic-ui-riot": "^2.2.2"
+    "semantic-ui-riot": "^2.2.3"
   }
 }

@@ -5,12 +5,16 @@
   <h1>{props.title}</h1>
 
   <!--
-    2020/07/22時点では本の通りに記述しても正しく動作しない。
-    semantic-ui-riotのサンプルページを見ても、su-checkbox-groupを利用するサンプルは正しく動作しておらず、
-    仕様の可能性もある。
+    ** 2020/07/12 **
+    本の通りに記述しても正しく動作しない。
+    semantic-ui-riotのサンプルページを見ても、su-checkbox-groupを利用するサンプルは正しく動作していない…
     URL: https://semantic-ui-riot.web.app/module/checkbox
+
+    ** 2020/07/13 **
+    本件についてTwitterでつぶやいたところ、作者の方からリプライがありsemantic-ui-riot@2.2.2のバグとのこと。
+    semantic-ui-riot@2.2.3にアップデートし、su-checkbox-groupのhandleChangeを削除したところ、正常に動作した。
   -->
-  <su-checkbox-group name="checkbox-group" value={checkboxGroupValue} onchange={handleChange}>
+  <su-checkbox-group name="checkbox-group" value={checkboxGroupValue}>
     <su-checkbox value="1">Checkbox 1</su-checkbox>
     <su-checkbox value="2">Checkbox 2</su-checkbox>
     <su-checkbox value="3">Checkbox 3</su-checkbox>
@@ -31,10 +35,6 @@
           })
         }
         this.checkboxGroupValue = value
-        this.update()
-      },
-      handleChange(e) {
-        this.isChecked = e.target.checked;
         this.update()
       }
     }
