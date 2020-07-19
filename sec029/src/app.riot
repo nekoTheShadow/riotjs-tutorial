@@ -6,17 +6,24 @@
     </nav>
   </router>
 
-  <route path="/(.*)">
-    <h2>{getPageById(route).title}</h2>
-    <p>{getPageById(route).body}</p>
+  <route path="/:page">
+    <Food title="{getPageById(route).title}" body="{getPageById(route).body}" color="#ffcc99"></Food>
+  </route>
+  <route path="/:page/:detail">
+    <Food title="{getPageById(route).title}" body="{getPageById(route).body}"></Food>
+  </route>
+  <route path="">
+    <Home title="{pages[0].title}" body="{oages[0].body}"></Food>
   </route>
 
-  <script>
+<script>
     import {Route, Router} from '@riotjs/route'
+    import Home from './components/app-home.riot'
+    import Food from './components/app-food.riot'
 
     export default {
       onBeforeMount(props, state){},
-      components: {Router, Route},
+      components: {Router, Route, Home, Food},
       pages: [
         {id: "", title: "Home", body:"Click the link above."},
         {id: "sushi", title: "Sushi", body:"This is the 🍣 page."},
