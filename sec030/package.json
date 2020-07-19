@@ -7,11 +7,11 @@
     "start": "parcel index.html --open"
   },
   "devDependencies": {
-    "@riotjs/hot-reload": "^4.0.1",
     "@riotjs/parcel-plugin-riot": "^4.0.1",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "@riotjs/hot-reload": "^4.0.1",
     "@riotjs/observable": "4.0.4",
     "@riotjs/route": "^5.3.3",
     "axios": "^0.19.2",
