@@ -1,0 +1,27 @@
+<app-header>
+  <div class="ui secondary pointing menu">
+    <h2 class="item">My CMS</h2>
+    <div class="right menu">
+      <su-dropdown items={dropdownItems}></su-dropdown>
+    </div>
+  </div>
+
+  <script>
+    export default {
+      dropdownItems: [
+        {label: 'Welcome', value: null, header: true, default: true},
+        {label: 'Profile', value: 1, icon: 'user'},
+        {label: 'Logout', value: 2, icon: 'sign-out'},
+      ]
+    }
+  </script>
+
+  <style>
+    .ui.blck.header {
+      background: #1793a5;
+      color: #fff;
+      border: none;
+      border-radius: unset;
+    }
+  </style>
+</app-header>

@@ -1,16 +1,30 @@
 <app>
   <login if={ !state.isLoggedIn } />
   <div id="wrapper" if={ state.isLoggedIn }>
-    <sidebar />
+    <app-header></app-header>
+    <sidebar></sidebar>
   </div>
   <script>
     import Login from './pages/login.riot'
     import Sidebar from './components/sidebar.riot'
+    import AppHeader from './components/app-header.riot'
     export default {
-      components: {Login, Sidebar},
+      components: {
+        Login, 
+        Sidebar,
+        AppHeader
+      },
       state: {
         isLoggedIn: true
       },
     }
   </script>
+  <style>
+    :host {
+      font-family: Futura;
+    }
+    #wrapper {
+      margin-left: 15%;
+    }
+  </style>
 </app>
