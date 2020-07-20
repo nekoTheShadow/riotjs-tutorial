@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 #app .app-header {
     padding: 10px;
     margin-bottom: 20px;
@@ -8,3 +13,4 @@
     height: 36px;
     margin-bottom: 5px;
 }
+

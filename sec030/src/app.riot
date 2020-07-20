@@ -3,16 +3,20 @@
   <div id="wrapper" if={ state.isLoggedIn }>
     <app-header></app-header>
     <sidebar></sidebar>
+    <div id="container"></div>
+    <app-footer></app-footer>
   </div>
   <script>
     import Login from './pages/login.riot'
     import Sidebar from './components/sidebar.riot'
     import AppHeader from './components/app-header.riot'
+    import AppFooter from './components/app-footer.riot'
     export default {
       components: {
         Login, 
         Sidebar,
-        AppHeader
+        AppHeader,
+        AppFooter
       },
       state: {
         isLoggedIn: true
@@ -22,9 +26,18 @@
   <style>
     :host {
       font-family: Futura;
+      height: 100%;
     }
     #wrapper {
       margin-left: 15%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    #container {
+      flex: 1;
+      background: #eee;
+      padding: 2rem;
     }
   </style>
 </app>
