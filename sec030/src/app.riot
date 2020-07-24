@@ -25,9 +25,14 @@
         AppRoute
       },
       state: {
-        isLoggedIn: true
+        isLoggedIn: false
       },
-      base: `${window.location.protocol}//${window.location.host}`
+      base: `${window.location.protocol}//${window.location.host}`,
+      onMounted() {
+        this.query.select('isLoggedIn').subscribe(val => {
+          this.update({isLoggedIn: val})
+        })
+      }
     }
   </script>
   <style>

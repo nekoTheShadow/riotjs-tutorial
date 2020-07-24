@@ -59,8 +59,15 @@
       },
       handleSubmit(e) {
         e.preventDefault()
-        if (e.target.username.value.length === 0) this.errors.username = errrorMessages.username;
-        if (e.target.password.value.length === 0) this.errors.password = errrorMessages.password;
+
+        const inputUsername = e.target.username.value
+        const inputPassword = e.target.username.value
+        if (inputUsername.length > 0 && inputPassword.length > 0) {
+          this.service.login()
+        } else {
+          if (inputUsername.length === 0) this.errors.username = errrorMessages.username;
+          if (inputPassword.length === 0) this.errors.password = errrorMessages.password;
+        }
         this.update()
       }
     }

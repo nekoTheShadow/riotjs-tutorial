@@ -15,7 +15,7 @@
           <div class="item"><a href="/profile"><i class="info circle icon"></i>Profile</a></div>
           <div class="item"><a href="/members"><i class="users icon"></i>Members</a></div>
           <div class="item"><a href="/status"><i class="chart line icon"></i>Stats</a></div>
-          <div class="item"><a href="/logout"><i class="sign-out icon"></i>Logout</a></div>
+          <div class="item"><a onclick={handleLogout}><i class="sign-out icon"></i>Logout</a></div>
         </div>
       </div>
 
@@ -23,7 +23,11 @@
   </navigation>
 
   <script>
-    export default{}
+    export default{
+      handleLogout() {
+        this.service.logout()
+      }
+    }
   </script>
 
   <style>
@@ -38,11 +42,26 @@
       width: 16%;
     }
     .i.user.icon {
-      font-size: 2rem;
+      font-size: 3rem;
     }
-    .ui.list > .item {
-      margin: 1.5rem auto;
+    .ui.menu .item.sidebar-head {
+      text-align: center;
+      font-weight: 900;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid #666;
+    }
+    .ui.menu .ui.list > .item a {
+      padding: 2rem .5rem;
       font-size: 1rem;
+      display: block;
+    }
+    .ui.inverted.menu .item > a:hover { 
+      color: #00b5ad;
+    }
+    .ui.inverted.menu .item.logout {
+      cursor: pointer;
+      padding: 2rem;
+      border-top: 1px solid #666;
     }
   </style>
 </sidebar>

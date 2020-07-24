@@ -11,6 +11,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "@datorama/akita": "^5.2.1",
     "@riotjs/hot-reload": "^4.0.1",
     "@riotjs/observable": "4.0.4",
     "@riotjs/route": "^5.3.3",

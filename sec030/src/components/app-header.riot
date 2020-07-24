@@ -15,8 +15,12 @@
         {label: 'Logout', value: '/logout', icon: 'sign-out'},
       ],
       handleChange(e) {
-        router.push(e.value)
-      }
+        if (e.value === '/profile') {
+          router.push(e.value)
+        } else {
+          this.service.logout()
+        }
+      },
     }
   </script>
 
