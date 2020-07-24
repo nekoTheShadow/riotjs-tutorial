@@ -1,3 +1,65 @@
 <dashboard>
-  <h2>Dashboard Page</h2>
+  <h2 class="ui teal tag label"></h2>
+  
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <h3><i class="users icon"></i>MEMBERS</h3>
+        <div>Total: <span class="large">87</span>People</div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="ui raised segment">
+        <h3><i class="envelope icon"></i>MAILS</h3>
+        <div>
+          <ul>
+            <li>received: <span class="large">37</span></li>
+            <li>unread: <span class="large">5</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="ui raised segment">
+        <h3><i class="chart bar icon"></i>PROGRESS</h3>
+        <div>
+          <su-progress class="indicating" name="progress" value="70">Completed</su-progress>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="ui raised segment">
+        <h3><i class="twitter icon"></i>SNS</h3>
+        <div>
+          <ul>
+            <li><i class="thumbs up outline icon"></i><span class="large">128</span></li>
+            <li><i class="retweet icon"></i><span class="large">45</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .ui.raised.segment {
+      border-left: 5px solid #008080;
+      min-height: 128px;
+    }
+    h2.ui.label {
+      margin-bottom: 1rem;
+    }
+    h3 {
+      color: #008080;
+    }
+    li:not(:last-child) {
+      margin: 3px auto;
+    }
+    span.large {
+      font-size: 1.5rem;
+    }
+  </style>
+
 </dashboard>
