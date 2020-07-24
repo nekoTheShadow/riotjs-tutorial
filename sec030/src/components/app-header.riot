@@ -2,17 +2,21 @@
   <div class="ui secondary pointing menu">
     <h2 class="item">My CMS</h2>
     <div class="right menu">
-      <su-dropdown items={dropdownItems}></su-dropdown>
+      <su-dropdown items={dropdownItems} onchange={handleChange}></su-dropdown>
     </div>
   </div>
 
   <script>
+    import {router} from '@riotjs/route'
     export default {
       dropdownItems: [
         {label: 'Welcome', value: null, header: true, default: true},
-        {label: 'Profile', value: 1, icon: 'user'},
-        {label: 'Logout', value: 2, icon: 'sign-out'},
-      ]
+        {label: 'Profile', value: '/profile', icon: 'user'},
+        {label: 'Logout', value: '/logout', icon: 'sign-out'},
+      ],
+      handleChange(e) {
+        router.push(e.value)
+      }
     }
   </script>
 

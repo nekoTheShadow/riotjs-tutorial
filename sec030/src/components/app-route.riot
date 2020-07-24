@@ -1,0 +1,37 @@
+<app-route>
+  <route path="/">
+    <dashboard></dashboard>
+  </route>
+
+  <route path="/dashboard">
+    <dashboard></dashboard>
+  </route>
+
+  <route path="/members">
+    <members></members>
+  </route>
+
+  <route path="/profile">
+    <profile></profile>
+  </route>
+
+  <route path="/status">
+    <status></status>
+  </route>
+
+  <script>
+    import Dashboard from '../pages/dashboard.riot'
+    import Members from '../pages/members.riot'
+    import Profile from '../pages/profile.riot'
+    import Status from '../pages/status.riot'
+
+    export default {
+      components: {
+        Dashboard,
+        Members,
+        Profile,
+        Status
+      }
+    }
+  </script>
+</app-route>
